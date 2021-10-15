@@ -6,7 +6,7 @@
 package com.maquinaria.maquinaria2.app.services;
 
 import com.maquinaria.maquinaria2.app.entities.Message;
-import com.maquinaria.maquinaria2.app.repositories.MessageRepository;
+import com.maquinaria.maquinaria2.app.repositories.crud.MessageRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
