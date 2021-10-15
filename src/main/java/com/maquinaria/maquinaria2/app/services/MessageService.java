@@ -6,10 +6,10 @@
 package com.maquinaria.maquinaria2.app.services;
 
 import com.maquinaria.maquinaria2.app.entities.Message;
-import com.maquinaria.maquinaria2.app.repositories.crud.MessageRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.maquinaria.maquinaria2.app.repositories.crud.MessageCRUDRepository;
 /**
  *
  * @author aldon
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageService {
     @Autowired
-    private MessageRepository repository;
+    private MessageCRUDRepository repository;
     
     /**
      * GET Consultar todos los registros.
@@ -37,8 +37,8 @@ public class MessageService {
     }
     
     public Message updateMessage(Message message){
-        Message existingMessage = repository.findById(message.getId()).orElse(null);
-        existingMessage.setMessagetext(message.getMessagetext());
+        Message existingMessage = repository.findById(message.getIdMessage()).orElse(null);
+        existingMessage.setMessageText(message.getMessageText());
         return repository.save(existingMessage);
     }
     
