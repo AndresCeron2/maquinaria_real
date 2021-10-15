@@ -63,20 +63,20 @@ public class MachineService {
      * @return 
      */
     public Machine update(Machine machine){
-        if(machine.getIdMachine()!=null){
-            Optional<Machine> resultado = repository.getMachine(machine.getIdMachine());
+        if(machine.getId()!=null){
+            Optional<Machine> resultado = repository.getMachine(machine.getId());
             if(resultado.isPresent()){
                 if(machine.getName()!=null){
                     resultado.get().setName(machine.getName());
                 }
-                if(machine.getAge()!=0){
-                    resultado.get().setAge(machine.getAge());
+                if(machine.getBrand()!=null){
+                    resultado.get().setBrand(machine.getBrand());
                 }
-                if(machine.getEmail()!=null){
-                    resultado.get().setEmail(machine.getEmail());
+                if(machine.getYear()!=null){
+                    resultado.get().setYear(machine.getYear());
                 }
-                if(machine.getPassword()!=null){
-                    resultado.get().setPassword(machine.getPassword());
+                if(machine.getDescription()!=null){
+                    resultado.get().setDescription(machine.getDescription());
                 }
                 repository.save(resultado.get());
                 return resultado.get();
