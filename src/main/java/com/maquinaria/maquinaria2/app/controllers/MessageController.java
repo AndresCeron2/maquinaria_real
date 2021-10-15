@@ -29,18 +29,18 @@ public class MessageController {
     
     @GetMapping("/all")
     public List<Message> findAllClient(){
-        return service.getMessage();
+        return service.getAll();
     }
     
     @PostMapping("/save")
     public ResponseEntity addMachine(@RequestBody Message message){
-        service.saveMessage(message);
+        service.save(message);
         return ResponseEntity.status(201).build();
     }
     
     @PutMapping("/update")
     public ResponseEntity updateMachine(@RequestBody Message message){
-        service.updateMessage(message);
+        service.update(message);
         return ResponseEntity.status(201).build();
     }
     
