@@ -64,12 +64,13 @@ public class ScoreController {
     
     /**
      * DELETE
-     * @param categoryId
+     * @param scoreId
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int categoryId) {
-        return service.deleteScore(categoryId);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int scoreId) {
+        return service.deleteScore(scoreId);
     }
     
 }

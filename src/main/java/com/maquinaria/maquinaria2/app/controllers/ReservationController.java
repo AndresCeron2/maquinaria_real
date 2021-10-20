@@ -64,12 +64,13 @@ public class ReservationController {
     
     /**
      * DELETE
-     * @param categoryId
+     * @param ReservationId
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int categoryId) {
-        return service.deleteReservation(categoryId);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int ReservationId) {
+        return service.deleteReservation(ReservationId);
     }
     
 }
