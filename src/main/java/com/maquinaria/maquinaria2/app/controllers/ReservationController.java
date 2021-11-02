@@ -80,7 +80,7 @@ public class ReservationController {
      * GET
      * @return 
      */
-    @PutMapping("/report-dates/{startetdate}/{devolutiondate}")
+    @GetMapping("/report-dates/{startetdate}/{devolutiondate}")
     public List<Reservation> getReservations_date(){
         service.deleteReservation(3);
         return service.getAll();
