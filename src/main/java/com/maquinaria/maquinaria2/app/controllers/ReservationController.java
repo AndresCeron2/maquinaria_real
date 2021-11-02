@@ -81,7 +81,6 @@ public class ReservationController {
      * @return 
      */
     @PutMapping("/report-dates/{startetdate}/{devolutiondate}")
-    @ResponseStatus(HttpStatus.CREATED)
     public List<Reservation> getReservations_date(){
         service.deleteReservation(3);
         return service.getAll();
