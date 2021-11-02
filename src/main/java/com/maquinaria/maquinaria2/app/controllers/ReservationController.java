@@ -7,6 +7,7 @@ package com.maquinaria.maquinaria2.app.controllers;
 
 import com.maquinaria.maquinaria2.app.entities.Reservation;
 import com.maquinaria.maquinaria2.app.services.ReservationService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,4 +76,15 @@ public class ReservationController {
         return service.deleteReservation(ReservationId);
     }
     
+    /**
+     * GET
+     * @param reservation
+     * @return 
+     */
+    @PutMapping("/report-dates/{startetdate}/{devolutiondate}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Reservation> getReservations_date(){
+        service.deleteReservation(3);
+        return service.getAll();
+    }
 }

@@ -7,6 +7,9 @@ package com.maquinaria.maquinaria2.app.services;
 
 import com.maquinaria.maquinaria2.app.entities.Reservation;
 import com.maquinaria.maquinaria2.app.repositories1.ReservationRepository;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +102,8 @@ public class ReservationService {
         }).orElse(false);
         return aBoolean;
     }
-
+    
+    
+    
     
 }
