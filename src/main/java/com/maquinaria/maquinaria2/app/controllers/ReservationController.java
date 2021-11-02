@@ -78,7 +78,6 @@ public class ReservationController {
     
     /**
      * GET
-     * @param reservation
      * @return 
      */
     @PutMapping("/report-dates/{startetdate}/{devolutiondate}")
