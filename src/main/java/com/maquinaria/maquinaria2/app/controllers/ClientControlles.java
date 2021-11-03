@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClientControlles {
    
     @Autowired
-    private ClientService service;
+    public ClientService service;
 	    
     /**
      * GET
