@@ -6,6 +6,8 @@
 package com.maquinaria.maquinaria2.app.controllers;
 
 import com.maquinaria.maquinaria2.app.entities.Reservation;
+import com.maquinaria.maquinaria2.app.entities.Client;
+import com.maquinaria.maquinaria2.app.services.ClientService;
 import com.maquinaria.maquinaria2.app.services.ReservationService;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,7 @@ public class ReservationController {
    
     @Autowired
     private ReservationService service;
+    private ClientService serviceClient;
 	    
     /**
      * GET
@@ -84,6 +87,11 @@ public class ReservationController {
     public List<Reservation> getReservations_date(){
         service.deleteReservation(3);
         return service.getAll();
+    }
+    
+    @GetMapping("/report-clients")
+    public List<Client> getclient(){
+        return serviceClient.getAll();
     }
     
     
