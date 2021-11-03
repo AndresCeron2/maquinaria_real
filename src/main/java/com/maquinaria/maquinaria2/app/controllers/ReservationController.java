@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import reporst.CountClient;
+import reporst.StatusReservation;
 
 /**
  *
@@ -35,7 +37,7 @@ public class ReservationController {
    
     @Autowired
     private ReservationService service;
-    private ClientService serviceClient;
+    
 	    
     /**
      * GET
@@ -79,19 +81,19 @@ public class ReservationController {
         return service.deleteReservation(ReservationId);
     }
     
-    /**
-     * GET
-     * @return 
-     */
-    @GetMapping("/report-dates/{startetdate}/{devolutiondate}")
-    public List<Reservation> getReservations_date(){
-        service.deleteReservation(3);
-        return service.getAll();
+    @GetMapping("/report-status")
+    public StatusReservation getReservas(){
+        return service.getReporteStatusReservaciones();
+    }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo){
+        return service.getReportesTiempoReservaciones(dateOne, dateTwo);
     }
     
     @GetMapping("/report-clients")
-    public List<Client> getclient(){
-        return serviceClient.getAll();
+    public List<CountClient> getClientes(){
+        return service.serviceTopClient();
     }
     
     

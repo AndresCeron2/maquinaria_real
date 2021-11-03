@@ -6,13 +6,16 @@
 package com.maquinaria.maquinaria2.app.repositories1;
 
 import com.maquinaria.maquinaria2.app.entities.Reservation;
+import com.maquinaria.maquinaria2.app.entities.Client;
 import com.maquinaria.maquinaria2.app.repositories.crud.ReservationCRUDRepository;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import reporst.CountClient;
 
 /**
  *
@@ -55,6 +58,28 @@ public class ReservationRepository {
      */
     public void delete(Reservation reservation){
         reservationCrudRepository.delete(reservation);
+    }
+    
+    public List<Reservation> ReservationStatus(String status) {
+        return reservationCrudRepository.findAllByStatus(status);
+    }
+    
+    public List<Reservation> ReservationTime(Date a, Date b) {
+        Calendar cala = Calendar.getInstance();
+        cala.setTime(a);
+        Calendar calb = Calendar.getInstance();
+        calb.setTime(b);
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(cala, calb);
+    }
+    
+    public List<CountClient> getTopClient() {
+        List<CountClient> res = new ArrayList<>();
+        List<Object[]> report = reservationCrudRepository.countTotalReservationsByClient();
+        for (int i = 0; i < report.size(); i++) {
+            res.add(new CountClient((Long) report.get(i)[1], (Client) report.get(i)[0]));
+
+        }
+        return res;
     }
     
     

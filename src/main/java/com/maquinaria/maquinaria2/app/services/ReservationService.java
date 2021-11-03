@@ -11,9 +11,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reporst.CountClient;
+import reporst.StatusReservation;
 
 /**
  *
@@ -103,6 +108,33 @@ public class ReservationService {
         return aBoolean;
     }
     
+    public StatusReservation getReporteStatusReservaciones() {
+        List<Reservation> completed = repository.ReservationStatus("completed");
+        List<Reservation> cancelled = repository.ReservationStatus("cancelled");
+        return new StatusReservation(completed.size(), cancelled.size());
+    }
+    
+    public List<Reservation> getReportesTiempoReservaciones(String datoA, String datoB) {
+        SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+        Date datoUno = new Date();
+        Date datoDos = new Date();
+
+        try {
+            datoUno = parser.parse(datoA);
+            datoDos = parser.parse(datoB);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (datoUno.before(datoDos)) {
+            return repository.ReservationTime(datoUno, datoDos);
+        } else {
+            return new ArrayList<>();
+        }
+    }
+//    
+    public List<CountClient> serviceTopClient() {
+        return repository.getTopClient();
+    }
     
     
     
