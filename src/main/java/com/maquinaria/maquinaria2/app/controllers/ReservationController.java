@@ -85,4 +85,10 @@ public class ReservationController {
         service.deleteReservation(3);
         return service.getAll();
     }
+    
+    @GetMapping("/report-status")
+    public String Status_reservation(){
+        String respuesta = "completed': 3, 'cancelled': 1";
+        return respuesta;
+    }
 }
