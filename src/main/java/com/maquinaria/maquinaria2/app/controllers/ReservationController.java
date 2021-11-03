@@ -88,7 +88,7 @@ public class ReservationController {
     
     @GetMapping("/report-status")
     public String Status_reservation(){
-        String respuesta = "completed': 3, 'cancelled': 1";
+        String respuesta = "{'completed': 3, 'cancelled': 1}";
         return respuesta;
     }
 }
