@@ -76,4 +76,9 @@ public class ClientControlles {
         return service.deleteClient(clientId);
     }
     
+    @GetMapping("/report-clients")
+    public List<Client> getclient(){
+        return service.getAll();
+    }
+    
 }
